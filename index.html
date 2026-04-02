@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sketch-Link — 창작자의 낙서에서 완벽한 영감으로</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ========== CURSOR FOLLOWER ========== -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- ========== NOISE OVERLAY ========== -->
+  <div class="noise-overlay"></div>
+
+  <!-- ========== NAV ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <span class="logo-icon"><i class="fas fa-pencil-alt"></i></span>
+        <span class="logo-text">Sketch<span class="logo-accent">Link</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#problem">문제</a></li>
+        <li><a href="#solution">솔루션</a></li>
+        <li><a href="#how">작동방식</a></li>
+        <li><a href="#features">기능</a></li>
+        <li><a href="#roadmap">로드맵</a></li>
+        <li><a href="#compare">비교</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="#waitlist" class="btn-nav-cta">얼리 액세스 <i class="fas fa-arrow-right"></i></a>
+        <button class="nav-hamburger" id="hamburger" aria-label="메뉴">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="#problem">문제</a>
+      <a href="#solution">솔루션</a>
+      <a href="#how">작동방식</a>
+      <a href="#features">기능</a>
+      <a href="#roadmap">로드맵</a>
+      <a href="#compare">비교</a>
+      <a href="#waitlist" class="mobile-cta">얼리 액세스</a>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <div class="hero-section-outer">
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <!-- 히어로 배경 영상 -->
+      <video class="hero-video" autoplay muted loop playsinline webkit-playsinline>
+        <source src="videos/hero-sketch.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-video-overlay"></div>
+      <canvas id="heroCanvas"></canvas>
+      <div class="hero-glow glow-1"></div>
+      <div class="hero-glow glow-2"></div>
+      <div class="hero-glow glow-3"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge" data-aos="fade-down">
+        <span class="badge-dot"></span>
+        AI 기반 창작자 전용 레퍼런스 검색 엔진
+      </div>
+      <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
+        <span class="title-line">낙서 한 장이</span>
+        <span class="title-line gradient-text">완벽한 레퍼런스로</span>
+        <span class="title-line">연결됩니다</span>
+      </h1>
+      <p class="hero-sub" data-aos="fade-up" data-aos-delay="200">
+        스케치를 업로드하면 AI가 구도·포즈를 분석해<br />
+        <strong>CC0 & 퍼블릭 도메인</strong> 이미지 중 가장 유사한<br />
+        레퍼런스를 즉시 찾아드립니다. 저작권 걱정 제로.
+      </p>
+      <div class="hero-actions" data-aos="fade-up" data-aos-delay="300">
+        <a href="#waitlist" class="btn-primary">
+          <span>무료로 시작하기</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+        <a href="#how" class="btn-secondary">
+          <i class="fas fa-play-circle"></i>
+          <span>작동 방식 보기</span>
+        </a>
+      </div>
+      <div class="hero-stats" data-aos="fade-up" data-aos-delay="400">
+        <div class="stat-item">
+          <span class="stat-num" data-count="500000">0</span><span class="stat-unit">+</span>
+          <span class="stat-label">CC0 이미지 DB</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-count="98">0</span><span class="stat-unit">%</span>
+          <span class="stat-label">저작권 안전</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-count="3">0</span><span class="stat-unit">초</span>
+          <span class="stat-label">평균 매칭 속도</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual" data-aos="fade-left" data-aos-delay="200">
+      <div class="mockup-wrapper">
+        <div class="mockup-card card-sketch">
+          <div class="card-label"><i class="fas fa-pencil-alt"></i> 내 스케치</div>
+          <div class="sketch-canvas-area">
+            <canvas id="sketchCanvas" width="260" height="200"></canvas>
+          </div>
+          <div class="card-footer">
+            <span class="tag tag-upload">업로드 완료</span>
+            <button class="card-btn" id="animateSketch">다시 그리기</button>
+          </div>
+        </div>
+        <div class="arrow-connector">
+          <div class="arrow-line"></div>
+          <div class="arrow-pulse">
+            <i class="fas fa-microchip"></i>
+            <span>AI 분석 중</span>
+          </div>
+        </div>
+        <div class="mockup-card card-results">
+          <div class="card-label"><i class="fas fa-images"></i> 매칭된 레퍼런스</div>
+          <div class="results-grid">
+            <div class="result-img r1" style="background: linear-gradient(135deg, rgb(210,224,173) 0%, rgb(160,185,100) 100%)">
+              <span class="match-badge">97%</span>
+              <div class="img-shimmer"></div>
+              <div class="result-label"><i class="fas fa-mountain"></i></div>
+            </div>
+            <div class="result-img r2" style="background: linear-gradient(135deg, rgb(245,241,228) 0%, rgb(220,210,180) 100%)">
+              <span class="match-badge">94%</span>
+              <div class="img-shimmer"></div>
+              <div class="result-label"><i class="fas fa-person-walking"></i></div>
+            </div>
+            <div class="result-img r3" style="background: linear-gradient(135deg, rgb(160,185,110) 0%, rgb(127,145,83) 100%)">
+              <span class="match-badge">91%</span>
+              <div class="img-shimmer"></div>
+              <div class="result-label"><i class="fas fa-tree"></i></div>
+            </div>
+            <div class="result-img r4" style="background: linear-gradient(135deg, rgb(238,232,210) 0%, rgb(200,190,155) 100%)">
+              <span class="match-badge">88%</span>
+              <div class="img-shimmer"></div>
+              <div class="result-label"><i class="fas fa-image"></i></div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="tag tag-cc0"><i class="fas fa-shield-alt"></i> CC0 인증</span>
+            <span class="tag tag-count">4 결과</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <span>스크롤</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+  </div>
+
+  <!-- ========== PROBLEM ========== -->
+  <section class="section problem-section" id="problem">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">THE PROBLEM</span>
+        <h2>창작자가 매일 겪는 <span class="gradient-text">3가지 고통</span></h2>
+        <p>레퍼런스 탐색은 창작의 시작점이지만, 현실은 막막합니다.</p>
+      </div>
+      <div class="problem-cards">
+        <div class="problem-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="problem-icon">
+            <div class="icon-bg danger"></div>
+            <i class="fas fa-exclamation-triangle"></i>
+          </div>
+          <div class="problem-num">01</div>
+          <h3>저작권 위험</h3>
+          <p>Google 이미지, Pinterest 등에서 무분별하게 참조하다 법적·윤리적 문제에 노출됩니다. 창작물이 표절 시비에 휘말리는 순간 커리어 전체가 위험해집니다.</p>
+          <div class="problem-quote">"어디까지가 참고이고 어디서부터 표절인지 경계가 모호해요."</div>
+        </div>
+        <div class="problem-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="problem-icon">
+            <div class="icon-bg warning"></div>
+            <i class="fas fa-search-minus"></i>
+          </div>
+          <div class="problem-num">02</div>
+          <h3>낮은 매칭 정확도</h3>
+          <p>키워드 검색으론 원하는 구도·포즈를 찾기 불가능합니다. "팔 들고 오른쪽 보는 인물" 같은 구체적 조건을 텍스트로 설명할 수 없어 수십 분을 낭비합니다.</p>
+          <div class="problem-quote">"머릿속에 그림은 있는데, 그걸 설명할 말이 없어요."</div>
+        </div>
+        <div class="problem-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="problem-icon">
+            <div class="icon-bg info"></div>
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="problem-num">03</div>
+          <h3>시간 낭비</h3>
+          <p>레퍼런스 수집에만 하루 평균 1-2시간이 소요됩니다. 창작에 써야 할 황금 같은 시간이 검색과 저장에 사라집니다.</p>
+          <div class="problem-quote">"그림 그리는 시간보다 레퍼런스 찾는 시간이 더 길어요."</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SOLUTION ========== -->
+  <section class="section solution-section" id="solution">
+    <div class="container">
+      <div class="split-layout">
+        <div class="split-left" data-aos="fade-right">
+          <span class="section-tag">THE SOLUTION</span>
+          <h2>Sketch-Link는<br /><span class="gradient-text">구조로 검색</span>합니다</h2>
+          <p class="split-desc">AI를 복제 도구가 아닌 <strong>'검색과 분석'의 도구</strong>로 사용합니다. 화풍(Style)이 아닌 구조(Structure)와 형태(Form) 중심의 유사도 계산으로, 창작자에게 진정으로 유용한 레퍼런스를 제공합니다.</p>
+          <ul class="solution-list">
+            <li>
+              <span class="list-icon"><i class="fas fa-shield-check"></i></span>
+              <div>
+                <strong>100% 클린 데이터</strong>
+                <span>CC0 및 퍼블릭 도메인만 인덱싱 — 법적 위험 제로</span>
+              </div>
+            </li>
+            <li>
+              <span class="list-icon"><i class="fas fa-vector-square"></i></span>
+              <div>
+                <strong>구조 기반 AI 매칭</strong>
+                <span>포즈·구도·레이아웃을 시각적으로 분석하는 독자적 알고리즘</span>
+              </div>
+            </li>
+            <li>
+              <span class="list-icon"><i class="fas fa-bolt"></i></span>
+              <div>
+                <strong>3초 이내 결과</strong>
+                <span>스케치 업로드 후 즉시 최적 레퍼런스 매칭 완료</span>
+              </div>
+            </li>
+            <li>
+              <span class="list-icon"><i class="fas fa-database"></i></span>
+              <div>
+                <strong>50만+ 이미지 DB</strong>
+                <span>Unsplash, Met Museum, Europeana 등 세계 유수 공공 아카이브</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="split-right" data-aos="fade-left">
+          <div class="solution-visual">
+            <div class="vs-card vs-old">
+              <div class="vs-label bad"><i class="fas fa-times"></i> 기존 방식</div>
+              <div class="vs-steps">
+                <div class="vs-step s-bad"><i class="fab fa-google"></i> Google 이미지 검색</div>
+                <div class="vs-arrow-small"><i class="fas fa-chevron-down"></i></div>
+                <div class="vs-step s-bad"><i class="fab fa-pinterest"></i> Pinterest 탐색 (30분~)</div>
+                <div class="vs-arrow-small"><i class="fas fa-chevron-down"></i></div>
+                <div class="vs-step s-bad"><i class="fas fa-question-circle"></i> 저작권 확인 불가</div>
+                <div class="vs-arrow-small"><i class="fas fa-chevron-down"></i></div>
+                <div class="vs-step s-bad s-result"><i class="fas fa-ban"></i> 법적 위험 잔존</div>
+              </div>
+            </div>
+            <div class="vs-divider"><span>VS</span></div>
+            <div class="vs-card vs-new">
+              <div class="vs-label good"><i class="fas fa-check"></i> Sketch-Link</div>
+              <div class="vs-steps">
+                <div class="vs-step s-good"><i class="fas fa-pencil-alt"></i> 러프 스케치 업로드</div>
+                <div class="vs-arrow-small"><i class="fas fa-chevron-down"></i></div>
+                <div class="vs-step s-good"><i class="fas fa-brain"></i> AI 구조 분석 (3초)</div>
+                <div class="vs-arrow-small"><i class="fas fa-chevron-down"></i></div>
+                <div class="vs-step s-good"><i class="fas fa-images"></i> CC0 레퍼런스 즉시 매칭</div>
+                <div class="vs-arrow-small"><i class="fas fa-chevron-down"></i></div>
+                <div class="vs-step s-good s-result"><i class="fas fa-shield-alt"></i> 100% 법적 안전</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== HOW IT WORKS ========== -->
+  <section class="section how-section" id="how">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">HOW IT WORKS</span>
+        <h2>단 <span class="gradient-text">3단계</span>로 완성</h2>
+        <p>복잡한 설정 없이, 스케치만 있으면 됩니다.</p>
+      </div>
+      <div class="steps-flow">
+        <div class="step-item" data-aos="fade-up" data-aos-delay="0">
+          <div class="step-circle">
+            <span class="step-num">01</span>
+            <div class="step-icon-wrap">
+              <i class="fas fa-cloud-upload-alt"></i>
+            </div>
+            <div class="step-pulse"></div>
+          </div>
+          <div class="step-content">
+            <h3>스케치 업로드</h3>
+            <p>러프 드로잉, 연필 스케치, 심지어 냅킨 위 낙서도 괜찮습니다. 파일 업로드 또는 캔버스에 직접 그려보세요.</p>
+            <div class="step-tags">
+              <span>JPG · PNG · SVG</span>
+              <span>드래그&드롭</span>
+              <span>직접 그리기</span>
+            </div>
+          </div>
+        </div>
+        <div class="step-connector">
+          <div class="connector-line"></div>
+          <div class="connector-dot"></div>
+        </div>
+        <div class="step-item" data-aos="fade-up" data-aos-delay="150">
+          <div class="step-circle">
+            <span class="step-num">02</span>
+            <div class="step-icon-wrap">
+              <i class="fas fa-brain"></i>
+            </div>
+            <div class="step-pulse"></div>
+          </div>
+          <div class="step-content">
+            <h3>AI 구조 분석</h3>
+            <p>엣지 감지·포즈 추정·레이아웃 분석 알고리즘이 스케치의 구조와 형태를 수치화합니다. 화풍은 무시, 뼈대만 봅니다.</p>
+            <div class="step-tags">
+              <span>엣지 감지</span>
+              <span>포즈 추정</span>
+              <span>레이아웃 분석</span>
+            </div>
+          </div>
+        </div>
+        <div class="step-connector">
+          <div class="connector-line"></div>
+          <div class="connector-dot"></div>
+        </div>
+        <div class="step-item" data-aos="fade-up" data-aos-delay="300">
+          <div class="step-circle">
+            <span class="step-num">03</span>
+            <div class="step-icon-wrap">
+              <i class="fas fa-magic"></i>
+            </div>
+            <div class="step-pulse"></div>
+          </div>
+          <div class="step-content">
+            <h3>레퍼런스 매칭</h3>
+            <p>50만+ CC0·퍼블릭 도메인 이미지 DB에서 유사도 순으로 결과를 제공합니다. 모든 결과물은 법적으로 안전하게 사용 가능합니다.</p>
+            <div class="step-tags">
+              <span>유사도 순 정렬</span>
+              <span>CC0 인증</span>
+              <span>원클릭 저장</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FEATURES ========== -->
+  <section class="section features-section" id="features">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">FEATURES</span>
+        <h2>창작자를 위해 <span class="gradient-text">설계된 모든 것</span></h2>
+        <p>MVP부터 완성형까지, 단계별로 쌓아가는 기능들입니다.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card feat-large" data-aos="fade-up">
+          <div class="feat-tag mvp">MVP 핵심</div>
+          <div class="feat-icon"><i class="fas fa-search"></i></div>
+          <h3>구조 기반 시각 검색</h3>
+          <p>키워드가 아닌 스케치의 구조적 특징(엣지, 포즈, 레이아웃)으로 이미지를 검색합니다. 텍스트로 표현할 수 없는 비주얼을 정확하게 찾아냅니다.</p>
+          <div class="feat-visual">
+            <div class="mini-sketch-demo" id="miniSketchDemo">
+              <canvas id="miniCanvas" width="200" height="120"></canvas>
+              <div class="demo-overlay"><i class="fas fa-play-circle"></i></div>
+            </div>
+          </div>
+        </div>
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="50">
+          <div class="feat-tag mvp">MVP 핵심</div>
+          <div class="feat-icon"><i class="fas fa-shield-alt"></i></div>
+          <h3>CC0 클린 데이터베이스</h3>
+          <p>Unsplash, Pexels, Met Museum, Europeana 등 신뢰할 수 있는 소스에서만 수집한 퍼블릭 도메인 이미지만 제공합니다.</p>
+          <div class="feat-sources">
+            <span>Unsplash</span>
+            <span>Met Museum</span>
+            <span>Europeana</span>
+            <span>NYPL</span>
+          </div>
+        </div>
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="feat-tag mvp">MVP 핵심</div>
+          <div class="feat-icon"><i class="fas fa-sliders-h"></i></div>
+          <h3>스마트 필터링</h3>
+          <p>카테고리(인물·풍경·오브젝트), 시대, 스타일 등 다양한 조건으로 결과를 좁혀 원하는 레퍼런스를 빠르게 찾습니다.</p>
+        </div>
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="feat-tag phase2">2단계</div>
+          <div class="feat-icon"><i class="fas fa-folder-open"></i></div>
+          <h3>레퍼런스 보드</h3>
+          <p>저장한 레퍼런스를 프로젝트별로 정리하고, 팀과 공유할 수 있는 무드보드 기능입니다.</p>
+        </div>
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="feat-tag phase2">2단계</div>
+          <div class="feat-icon"><i class="fas fa-users"></i></div>
+          <h3>크리에이터 커뮤니티</h3>
+          <p>창작자들이 레퍼런스 보드와 프로세스를 공유하는 커뮤니티. 서로의 작업 방식에서 영감을 얻습니다.</p>
+        </div>
+        <div class="feature-card feat-large" data-aos="fade-up" data-aos-delay="250">
+          <div class="feat-tag phase3">3단계</div>
+          <div class="feat-icon"><i class="fas fa-plug"></i></div>
+          <h3>플러그인 & API</h3>
+          <p>Photoshop, Procreate, Figma 등 크리에이터가 이미 사용하는 도구 안에서 Sketch-Link를 바로 사용할 수 있는 플러그인 생태계를 구축합니다.</p>
+          <div class="feat-integrations">
+            <div class="int-item"><i class="fas fa-paint-brush"></i><span>Photoshop</span></div>
+            <div class="int-item"><i class="fas fa-tablet-alt"></i><span>Procreate</span></div>
+            <div class="int-item"><i class="fab fa-figma"></i><span>Figma</span></div>
+            <div class="int-item"><i class="fas fa-code"></i><span>API</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DATA SOURCES ========== -->
+  <section class="section data-section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">CLEAN DATA</span>
+        <h2>신뢰할 수 있는 <span class="gradient-text">데이터 소스</span></h2>
+        <p>데이터의 출처가 곧 서비스의 신뢰입니다.</p>
+      </div>
+      <div class="data-grid" data-aos="fade-up">
+        <div class="data-card">
+          <div class="data-icon" style="color:rgb(127,145,83)"><i class="fas fa-camera"></i></div>
+          <h4>Unsplash API</h4>
+          <p>고품질 무료 사진 라이브러리</p>
+          <span class="data-count">200만+</span>
+        </div>
+        <div class="data-card">
+          <div class="data-icon" style="color:rgb(96,112,58)"><i class="fas fa-palette"></i></div>
+          <h4>Pexels API</h4>
+          <p>CC0 사진 및 영상</p>
+          <span class="data-count">350만+</span>
+        </div>
+        <div class="data-card">
+          <div class="data-icon" style="color:rgb(160,178,110)"><i class="fas fa-landmark"></i></div>
+          <h4>Metropolitan Museum</h4>
+          <p>세계 유수 미술관 공공 아카이브</p>
+          <span class="data-count">47만+</span>
+        </div>
+        <div class="data-card">
+          <div class="data-icon" style="color:rgb(185,205,140)"><i class="fas fa-globe-europe"></i></div>
+          <h4>Europeana</h4>
+          <p>유럽 문화유산 디지털 아카이브</p>
+          <span class="data-count">5,000만+</span>
+        </div>
+        <div class="data-card">
+          <div class="data-icon" style="color:#4ecdc4"><i class="fas fa-book-open"></i></div>
+          <h4>NYPL Digital</h4>
+          <p>뉴욕 공립 도서관 디지털 컬렉션</p>
+          <span class="data-count">80만+</span>
+        </div>
+        <div class="data-card">
+          <div class="data-icon" style="color:#ff8c42"><i class="fas fa-university"></i></div>
+          <h4>Smithsonian</h4>
+          <p>스미소니언 박물관 오픈 액세스</p>
+          <span class="data-count">430만+</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ROADMAP ========== -->
+  <section class="section roadmap-section" id="roadmap">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">ROADMAP</span>
+        <h2>단계적 성장 <span class="gradient-text">로드맵</span></h2>
+        <p>MVP에서 플랫폼 생태계까지, 명확한 로드맵으로 나아갑니다.</p>
+      </div>
+      <div class="roadmap-timeline">
+        <div class="rm-item active" data-aos="fade-right">
+          <div class="rm-marker">
+            <div class="rm-dot active"></div>
+            <div class="rm-line"></div>
+          </div>
+          <div class="rm-card">
+            <div class="rm-phase">Phase 1 · MVP</div>
+            <div class="rm-period">현재 개발 중</div>
+            <h3>핵심 검색 엔진</h3>
+            <ul>
+              <li><i class="fas fa-check-circle"></i> 스케치 업로드 UI</li>
+              <li><i class="fas fa-check-circle"></i> 엣지 기반 AI 분석 엔진</li>
+              <li><i class="fas fa-check-circle"></i> CC0 이미지 DB 인덱싱</li>
+              <li><i class="fas fa-check-circle"></i> 유사도 기반 검색 결과</li>
+              <li><i class="fas fa-spinner fa-spin"></i> 베타 테스트 (100명)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="rm-item" data-aos="fade-right" data-aos-delay="100">
+          <div class="rm-marker">
+            <div class="rm-dot"></div>
+            <div class="rm-line"></div>
+          </div>
+          <div class="rm-card">
+            <div class="rm-phase">Phase 2 · Growth</div>
+            <div class="rm-period">3개월 후</div>
+            <h3>플랫폼 확장</h3>
+            <ul>
+              <li><i class="fas fa-circle"></i> 레퍼런스 보드 (무드보드)</li>
+              <li><i class="fas fa-circle"></i> 팀 협업 기능</li>
+              <li><i class="fas fa-circle"></i> 크리에이터 커뮤니티</li>
+              <li><i class="fas fa-circle"></i> 고급 필터 & 태그 시스템</li>
+              <li><i class="fas fa-circle"></i> 모바일 앱 (iOS/Android)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="rm-item" data-aos="fade-right" data-aos-delay="200">
+          <div class="rm-marker">
+            <div class="rm-dot"></div>
+            <div class="rm-line"></div>
+          </div>
+          <div class="rm-card">
+            <div class="rm-phase">Phase 3 · Ecosystem</div>
+            <div class="rm-period">6개월 후</div>
+            <h3>생태계 구축</h3>
+            <ul>
+              <li><i class="fas fa-circle"></i> Photoshop 플러그인</li>
+              <li><i class="fas fa-circle"></i> Figma 플러그인</li>
+              <li><i class="fas fa-circle"></i> Procreate 연동</li>
+              <li><i class="fas fa-circle"></i> 개발자 API 공개</li>
+              <li><i class="fas fa-circle"></i> 엔터프라이즈 플랜</li>
+            </ul>
+          </div>
+        </div>
+        <div class="rm-item" data-aos="fade-right" data-aos-delay="300">
+          <div class="rm-marker">
+            <div class="rm-dot"></div>
+          </div>
+          <div class="rm-card">
+            <div class="rm-phase">Phase 4 · AI Evolution</div>
+            <div class="rm-period">12개월 후</div>
+            <h3>AI 고도화</h3>
+            <ul>
+              <li><i class="fas fa-circle"></i> 3D 포즈 추정 지원</li>
+              <li><i class="fas fa-circle"></i> 스타일 트랜스퍼 (Opt-in)</li>
+              <li><i class="fas fa-circle"></i> 실시간 스케치 매칭</li>
+              <li><i class="fas fa-circle"></i> 멀티모달 검색</li>
+              <li><i class="fas fa-circle"></i> 개인화 추천 AI</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== COMPARISON ========== -->
+  <section class="section compare-section" id="compare">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">COMPARISON</span>
+        <h2>경쟁 서비스와의 <span class="gradient-text">차별점</span></h2>
+        <p>비슷해 보이지만, 전혀 다른 접근입니다.</p>
+      </div>
+      <div class="compare-table-wrap" data-aos="fade-up">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>기능</th>
+              <th>Google 이미지</th>
+              <th>Pinterest</th>
+              <th>Midjourney</th>
+              <th>Stable Diffusion</th>
+              <th class="highlight-col">Sketch-Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>스케치 → 이미지 검색</td>
+              <td><i class="fas fa-times bad"></i></td>
+              <td><i class="fas fa-times bad"></i></td>
+              <td><i class="fas fa-minus neutral"></i></td>
+              <td><i class="fas fa-minus neutral"></i></td>
+              <td class="highlight-col"><i class="fas fa-check good"></i></td>
+            </tr>
+            <tr>
+              <td>저작권 완전 안전</td>
+              <td><i class="fas fa-times bad"></i></td>
+              <td><i class="fas fa-times bad"></i></td>
+              <td><i class="fas fa-times bad"></i></td>
+              <td><i class="fas fa-minus neutral"></i></td>
+              <td class="highlight-col"><i class="fas fa-check good"></i></td>
+            </tr>
+            <tr>
+              <td>구도/포즈 기반 검색</td>
+              <td><i class="fas fa-times bad"></i></td>
+              <td><i class="fas fa-times bad"></i></td>
+              <td><i class="fas fa-minus neutral"></i></td>
+              <td><i class="fas fa-minus neutral"></i></td>
+              <td class="highlight-col"><i class="fas fa-check good"></i></td>
+            </tr>
+            <tr>
+              <td>실제 참조 이미지 제공</td>
+              <td><i class="fas fa-check good"></i></td>
+              <td><i class="fas fa-check good"></i></td>
+              <td><i class="fas fa-times bad"></i></td>
+              <td><i class="fas fa-times bad"></i></td>
+              <td class="highlight-col"><i class="fas fa-check good"></i></td>
+            </tr>
+            <tr>
+              <td>AI 복제 없음 (윤리적)</td>
+              <td><i class="fas fa-check good"></i></td>
+              <td><i class="fas fa-check good"></i></td>
+              <td><i class="fas fa-times bad"></i></td>
+              <td><i class="fas fa-times bad"></i></td>
+              <td class="highlight-col"><i class="fas fa-check good"></i></td>
+            </tr>
+            <tr>
+              <td>무료 이용 가능</td>
+              <td><i class="fas fa-check good"></i></td>
+              <td><i class="fas fa-check good"></i></td>
+              <td><i class="fas fa-times bad"></i></td>
+              <td><i class="fas fa-check good"></i></td>
+              <td class="highlight-col"><i class="fas fa-check good"></i></td>
+            </tr>
+            <tr>
+              <td>창작자 전용 UX</td>
+              <td><i class="fas fa-times bad"></i></td>
+              <td><i class="fas fa-minus neutral"></i></td>
+              <td><i class="fas fa-minus neutral"></i></td>
+              <td><i class="fas fa-times bad"></i></td>
+              <td class="highlight-col"><i class="fas fa-check good"></i></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BUSINESS MODEL ========== -->
+  <section class="section biz-section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">BUSINESS MODEL</span>
+        <h2>지속 가능한 <span class="gradient-text">수익 구조</span></h2>
+      </div>
+      <div class="biz-cards">
+        <div class="biz-card" data-aos="fade-up">
+          <div class="biz-icon"><i class="fas fa-gift"></i></div>
+          <h3>Free</h3>
+          <div class="biz-price">₩0<span>/월</span></div>
+          <ul>
+            <li><i class="fas fa-check"></i> 월 20회 검색</li>
+            <li><i class="fas fa-check"></i> 기본 필터</li>
+            <li><i class="fas fa-check"></i> 보드 1개</li>
+          </ul>
+          <div class="biz-tag">진입장벽 제거</div>
+        </div>
+        <div class="biz-card featured" data-aos="fade-up" data-aos-delay="100">
+          <div class="biz-popular">가장 인기</div>
+          <div class="biz-icon"><i class="fas fa-crown"></i></div>
+          <h3>Creator Pro</h3>
+          <div class="biz-price">₩9,900<span>/월</span></div>
+          <ul>
+            <li><i class="fas fa-check"></i> 무제한 검색</li>
+            <li><i class="fas fa-check"></i> 고급 필터 & 태그</li>
+            <li><i class="fas fa-check"></i> 무제한 보드</li>
+            <li><i class="fas fa-check"></i> 팀 공유 (3인)</li>
+            <li><i class="fas fa-check"></i> 우선 검색 속도</li>
+          </ul>
+          <div class="biz-tag">핵심 수익원</div>
+        </div>
+        <div class="biz-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="biz-icon"><i class="fas fa-building"></i></div>
+          <h3>Studio</h3>
+          <div class="biz-price">₩49,000<span>/월</span></div>
+          <ul>
+            <li><i class="fas fa-check"></i> 팀 무제한</li>
+            <li><i class="fas fa-check"></i> API 액세스</li>
+            <li><i class="fas fa-check"></i> 플러그인 우선 지원</li>
+            <li><i class="fas fa-check"></i> 전담 고객 지원</li>
+            <li><i class="fas fa-check"></i> 사용 보고서</li>
+          </ul>
+          <div class="biz-tag">엔터프라이즈</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WAITLIST ========== -->
+  <section class="section waitlist-section" id="waitlist">
+    <div class="container">
+      <div class="waitlist-inner" data-aos="fade-up">
+        <div class="waitlist-glow"></div>
+        <span class="section-tag">EARLY ACCESS</span>
+        <h2>창작자를 위한 검색, <br /><span class="gradient-text">가장 먼저 경험하세요</span></h2>
+        <p>베타 테스터 100명에게 6개월 Creator Pro 무료 제공.<br />지금 등록하면 우선순위가 주어집니다.</p>
+        <form class="waitlist-form" id="waitlistForm">
+          <div class="form-group">
+            <input type="text" placeholder="이름" id="wlName" required />
+            <input type="email" placeholder="이메일 주소" id="wlEmail" required />
+            <select id="wlType">
+              <option value="">직업 선택</option>
+              <option value="illust">일러스트레이터</option>
+              <option value="webtoon">웹툰 작가</option>
+              <option value="design">그래픽 디자이너</option>
+              <option value="concept">컨셉 아티스트</option>
+              <option value="student">학생</option>
+              <option value="other">기타</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-primary btn-waitlist">
+            <span>얼리 액세스 신청하기</span>
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+        <div class="waitlist-success" id="waitlistSuccess" style="display:none;">
+          <i class="fas fa-check-circle"></i>
+          <h3>신청 완료!</h3>
+          <p>곧 연락드리겠습니다. 🎨</p>
+        </div>
+        <div class="waitlist-count">
+          <div class="wl-avatars">
+            <div class="wl-av" style="background:rgb(127,145,83)">A</div>
+            <div class="wl-av" style="background:rgb(160,178,110)">B</div>
+            <div class="wl-av" style="background:rgb(96,112,58)">C</div>
+            <div class="wl-av" style="background:rgb(185,205,140)">D</div>
+          </div>
+          <span><strong>247명</strong>이 이미 대기 중입니다</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo">
+            <span class="logo-icon"><i class="fas fa-pencil-alt"></i></span>
+            <span class="logo-text">Sketch<span class="logo-accent">Link</span></span>
+          </a>
+          <p>창작자의 낙서에서 완벽하고 안전한<br />영감을 연결합니다.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h5>서비스</h5>
+            <a href="#how">작동방식</a>
+            <a href="#features">기능</a>
+            <a href="#roadmap">로드맵</a>
+            <a href="#compare">비교</a>
+          </div>
+          <div class="footer-col">
+            <h5>회사</h5>
+            <a href="#">소개</a>
+            <a href="#">블로그</a>
+            <a href="#">채용</a>
+            <a href="#">연락</a>
+          </div>
+          <div class="footer-col">
+            <h5>법적고지</h5>
+            <a href="#">이용약관</a>
+            <a href="#">개인정보처리방침</a>
+            <a href="#">저작권 정책</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Sketch-Link. All rights reserved.</span>
+        <span>창작자의 권리를 최우선으로 보호합니다. 🛡️</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
