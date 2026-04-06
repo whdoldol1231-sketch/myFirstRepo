@@ -1,6 +1,6 @@
 # SketchLink — 창작자의 낙서에서 완벽한 레퍼런스로
 
-![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)
+
 
 ## 프로젝트 개요
 AI 기반 창작자 전용 레퍼런스 검색 엔진. 러프 스케치를 업로드하면 구도·포즈를 분석하여 CC0/퍼블릭 도메인 이미지 중 가장 유사한 레퍼런스를 즉시 매칭합니다.
@@ -96,3 +96,7 @@ README.md
 ## 배포
 
 **Publish 탭**에서 원클릭 배포 가능합니다.
+
+![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)
+![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)
+![Adobe Photoshop](https://img.shields.io/badge/adobe%20photoshop-%2331A8FF.svg?style=for-the-badge&logo=adobe%20photoshop&logoColor=white)
