@@ -2,7 +2,7 @@
 
 
 
-## 프로젝트 개요
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Light%20Bulb.png" width="25"> 프로젝트 개요
 AI 기반 창작자 전용 레퍼런스 검색 엔진. 러프 스케치를 업로드하면 구도·포즈를 분석하여 CC0/퍼블릭 도메인 이미지 중 가장 유사한 레퍼런스를 즉시 매칭합니다.
 
 ---
